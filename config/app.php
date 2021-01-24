@@ -16,9 +16,9 @@ return [
     'database' => [
 
         'host' => 'localhost',
-        'database' => '',
-        'username' => '',
-        'password' => '',
+        'database' => 'ossn',
+        'username' => 'root',
+        'password' => 'root1432',
         'port' => '3306',
 
     ],
@@ -39,7 +39,7 @@ return [
  */
     'mailer' => [
 
-        'host' => '', 
+        'host' => '',
         'secure' => 0,
         'username' => '',
         'password' => '',
