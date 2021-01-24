@@ -3,8 +3,11 @@ namespace App\Middlewares;
 
 return [
 
-     'middlewares' => [   
-     \Scrawler\Middleware\Csrf::class,
-     // Demo::class,
-     ]
+    'middlewares' => [
+        \Scrawler\Middleware\Csrf::class,
+        // Demo::class,
+    ],
+    'api_middlewares' => [
+
+    ],
 ];

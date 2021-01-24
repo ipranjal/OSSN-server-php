@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3a48d9753ef4c8b8982617c8e6e08e0",
+    "content-hash": "681e7040cdd18fed7fd291910d2e2f15",
     "packages": [
         {
             "name": "eftec/bladeone",
@@ -113,16 +113,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.9.1",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "307fb34a5ab697461ec4c9db865b20ff2fd40771"
+                "reference": "df7933820090489623ce0be5e85c7e693638e536"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/307fb34a5ab697461ec4c9db865b20ff2fd40771",
-                "reference": "307fb34a5ab697461ec4c9db865b20ff2fd40771",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/df7933820090489623ce0be5e85c7e693638e536",
+                "reference": "df7933820090489623ce0be5e85c7e693638e536",
                 "shasum": ""
             },
             "require": {
@@ -172,9 +172,15 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.9.1"
+                "source": "https://github.com/filp/whoops/tree/2.9.2"
             },
-            "time": "2020-11-01T12:00:00+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/denis-sokolov",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-01-24T12:00:00+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -463,6 +469,102 @@
                 }
             ],
             "time": "2021-01-18T20:58:21+00:00"
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
+                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "psr/log": "^1.0.1"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "elasticsearch/elasticsearch": "^7",
+                "graylog2/gelf-php": "^1.4.2",
+                "mongodb/mongodb": "^1.8",
+                "php-amqplib/php-amqplib": "~2.4",
+                "php-console/php-console": "^3.1.3",
+                "phpspec/prophecy": "^1.6.1",
+                "phpstan/phpstan": "^0.12.59",
+                "phpunit/phpunit": "^8.5",
+                "predis/predis": "^1.1",
+                "rollbar/rollbar": "^1.3",
+                "ruflin/elastica": ">=0.90 <7.0.1",
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mbstring": "Allow to work properly with unicode symbols",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "php-console/php-console": "Allow sending log messages to Google Chrome",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "https://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "https://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-12-14T13:15:25+00:00"
         },
         {
             "name": "opis/closure",
@@ -1097,6 +1199,52 @@
                 "source": "https://github.com/php-fig/log/tree/1.1.3"
             },
             "time": "2020-03-23T09:12:05+00:00"
+        },
+        {
+            "name": "rakit/validation",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rakit/validation.git",
+                "reference": "ff003a35cdf5030a5f2482299f4c93f344a35b29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rakit/validation/zipball/ff003a35cdf5030a5f2482299f4c93f344a35b29",
+                "reference": "ff003a35cdf5030a5f2482299f4c93f344a35b29",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rakit\\Validation\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammad Syifa",
+                    "email": "emsifa@gmail.com"
+                }
+            ],
+            "description": "PHP Laravel like standalone validation library",
+            "support": {
+                "issues": "https://github.com/rakit/validation/issues",
+                "source": "https://github.com/rakit/validation/tree/v1.4.0"
+            },
+            "time": "2020-08-27T05:07:01+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -1775,16 +1923,16 @@
         },
         {
             "name": "scrawler/framework",
-            "version": "2.2.9",
+            "version": "3.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scrawler-php/framework.git",
-                "reference": "5265d8a0a9d1a41b38c710f5ad271aeec54be017"
+                "reference": "e6c793b2859e3202798c83b19f4e8ab25762206a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scrawler-php/framework/zipball/5265d8a0a9d1a41b38c710f5ad271aeec54be017",
-                "reference": "5265d8a0a9d1a41b38c710f5ad271aeec54be017",
+                "url": "https://api.github.com/repos/scrawler-php/framework/zipball/e6c793b2859e3202798c83b19f4e8ab25762206a",
+                "reference": "e6c793b2859e3202798c83b19f4e8ab25762206a",
                 "shasum": ""
             },
             "require": {
@@ -1792,10 +1940,12 @@
                 "filp/whoops": "^2.7",
                 "hassankhan/config": "^2.1",
                 "league/flysystem": "^1.0",
+                "monolog/monolog": "^2.1",
                 "php-di/php-di": "^6.1",
                 "phpmailer/phpmailer": "^6.1",
+                "rakit/validation": "^1.4",
                 "scrawler/database": "^5.5.1",
-                "scrawler/router": "^2.0",
+                "scrawler/router": "^3.0",
                 "symfony/event-dispatcher": "^4.1",
                 "symfony/http-kernel": "^4.1"
             },
@@ -1824,22 +1974,22 @@
             "description": "RAD and Modular PHP Framework",
             "support": {
                 "issues": "https://github.com/scrawler-php/framework/issues",
-                "source": "https://github.com/scrawler-php/framework/tree/2.2.9"
+                "source": "https://github.com/scrawler-php/framework/tree/3.0.0-beta3"
             },
-            "time": "2020-10-20T03:38:59+00:00"
+            "time": "2020-11-02T19:47:39+00:00"
         },
         {
             "name": "scrawler/router",
-            "version": "v2.2.1",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scrawler-php/router.git",
-                "reference": "ea9cdd9326cf811c7e08c0e6db76e668b00f265b"
+                "reference": "77091ba20442c61b4cf49c319d06cbc2ee4accae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scrawler-php/router/zipball/ea9cdd9326cf811c7e08c0e6db76e668b00f265b",
-                "reference": "ea9cdd9326cf811c7e08c0e6db76e668b00f265b",
+                "url": "https://api.github.com/repos/scrawler-php/router/zipball/77091ba20442c61b4cf49c319d06cbc2ee4accae",
+                "reference": "77091ba20442c61b4cf49c319d06cbc2ee4accae",
                 "shasum": ""
             },
             "require": {
@@ -1875,9 +2025,9 @@
             ],
             "support": {
                 "issues": "https://github.com/scrawler-php/router/issues",
-                "source": "https://github.com/scrawler-php/router/tree/v2.2.1"
+                "source": "https://github.com/scrawler-php/router/tree/v3.0.1"
             },
-            "time": "2020-10-31T17:54:15+00:00"
+            "time": "2020-11-02T19:51:35+00:00"
         },
         {
             "name": "symfony/console",
@@ -3467,7 +3617,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "scrawler/framework": 10
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
