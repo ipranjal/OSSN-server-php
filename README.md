@@ -1,24 +1,17 @@
-<p align="center"><img src="https://cdn.discordapp.com/attachments/682361422831026257/709508006618071120/Scrawleer-PHP.svg" width="400"></p>
-<p align="center">
-  <a href="https://travis-ci.com/github/scrawler-php/framework"><img alt="Travis (.com)" src="https://img.shields.io/travis/com/scrawler-php/framework?style=flat-square"></a>
-<a href="https://scrutinizer-ci.com/g/scrawler-php/framework"><img alt="Scrutinizer code quality (GitHub/Bitbucket)" src="https://img.shields.io/scrutinizer/quality/g/scrawler-php/framework?style=flat-square"></a>
-<a href="https://www.codefactor.io/repository/github/scrawler-php/framework"><img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/scrawler-php/framework?label=code%20factor&style=flat-square"></a>
-<!--   <a href="https://packagist.org/packages/scrawler/framework"><img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/scrawler/framework?style=flat-square"></a> -->
- <a href="https://packagist.org/packages/scrawler/framework"> <img alt="GitHub release (latest SemVer including pre-releases)" src="https://img.shields.io/github/v/release/scrawler-php/framework?include_prereleases"></a>
-  <a href="https://github.com/scrawler-php/framework/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/scrawler-php/framework?style=flat-square"></a>
-</p>
 
-## About Scrawler Framework
+## OSSN SERVER PHP [WIP]
+Open Source Social Networking API built in PHP
 
-Scrawler is a PHP framework for Rapid Application Development keeping high speed and automated development in mind. Scrawler consist of helper function and classes that makes application development really fast and has focus on performace and agressive caching.
+This is a server side implementation of [OSSNAPI spec](https://github.com/OSSNAPI/OpenAPI-spec) built using [Scrawler PHP](https://github.com/scrawler-php/framework).This project was created during **Postman API Hackathon**
 
-## Usage
-
-1. To start a new project `composer create-project scrawler/scrawler project_name`
-2. Start writing your logic inside `/app/controllers` everything else would be taken care by framework itself!
+## Links to Useful Resources
+- OpenAPI 3.0 specification file - https://github.com/OSSNAPI/OpenAPI-spec
+- Blog Posts about the project and hackathon - https://physcocode.com/category/postman/
+- API documents - https://documenter.getpostman.com/view/1722111/TW6tLq53
+- Postman public workspace - https://pranjalshop.postman.co
 
 
 ## License
 
 Scrawler Router is created by [Pranjal Pandey](https://www.physcocode.com) and released under
-the apache 2.0 License.
+the MIT License.
