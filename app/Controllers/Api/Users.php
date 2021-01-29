@@ -4,108 +4,61 @@ namespace App\Controllers\Api;
 
 class Users
 {
-	/**
-	 * @params optional
-	 */
-	public function getIndex($id)
-	{
-		if($id){
+    /**
+     * @params optional
+     */
+    public function getIndex($id)
+    {
+        if ($id) {
+            $user = app()->db()->get('user', $id);
+            $user->meta = json_decode($user->meta, true);
+            return json_encode($user);
+        }
 
-		return '{
-		 "id": 10,
-		 "name": "Pranjal Pandey",
-		 "username": "physcocode",
-		 "email": "pranjal@corpusvision.com",
-		 "img": "exapmle.com/physcocode/profile.png",
-		 "meta": {
-		  "gender": "Male",
-		  "city": "Mumbai",
-		  "country": "India"
-		 }
-		}';
-		}
+        $users = app()->db()->get('user');
+        foreach ($users as $user) {
+            $user->meta = \json_decode($user->meta, true);
+        }
+        return $users;
+    }
 
-		return '[
-		 {
-		  "id": 21,
-		  "name": "Ellie D",
-		  "username": "its_ellie",
-		  "email": "ellie@gmail.com",
-		  "img": "exapmle.com/ellie/profile.png",
-		  "meta": {
-		   "gender": "Female",
-		   "city": "New York",
-		   "country": "USA"
-		  }
-		 },
-		 {
-		  "id": 10,
-		  "name": "Pranjal Pandey",
-		  "username": "physcocode",
-		  "email": "pranjal@corpusvision.com",
-		  "img": "exapmle.com/physcocode/profile.png",
-		  "meta": {
-		   "gender": "Male",
-		   "city": "Mumbai",
-		   "country": "India"
-		  }
-		 },
-		 {
-		  "id": 10,
-		  "name": "Vineet Singh",
-		  "username": "Veneed",
-		  "email": "vineet@corpusvision.com",
-		  "img": "exapmle.com/veneed/profile.png",
-		  "meta": {
-		   "gender": "Male",
-		   "city": "Mumbai",
-		   "country": "India"
-		  }
-		 }
-		]';
-	}
+    public function putIndex($id)
+    {
+        if ($id) {
+            $user = app()->db()->get('user', $id);
+            $user = app()->db()->BindRequest($user);
+            $user->meta = \json_encode($user->meta);
+            app()->db()->save($user);
+            $user->meta = \json_decode($user->meta);
 
+            return json_encode($user);
+        }
+    }
 
-	public function putIndex($id)
-	{
-		if($id){
-
-		return '{
-		 "id": 10,
-		 "name": "Pranjal P",
-		 "username": "physcocode",
-		 "email": "pranjal@corpusvision.com",
-		 "img": "exapmle.com/physcocode/profile.png",
-		 "meta": {
-		  "gender": "Male",
-		  "city": "Mumbai",
-		  "country": "India"
-		 }
-		}';
-		}
-	}
-
-
-	public function deleteIndex($id)
-	{
-		if($id){
-
-		return '{
+    public function deleteIndex($id)
+    {
+        if ($id) {
+            $user = app()->db()->get('user', $id);
+            app()->db()->delete($user);
+            return '{
 		 "code": 200,
 		 "message": "user successfully deleted"
 		}';
-		}
-	}
+        }
+    }
 
+    /**
+     * @params optional
+     */
+    public function postIndex()
+    {
+        $user = app()->db()->bindRequest('user');
+        $user->meta = \json_encode($user->meta);
+        $id = app()->db()->save($user);
 
-	/**
-	 * @params optional
-	 */
-	public function postIndex()
-	{
-		return '{
+        return '{
 		 "code": 201,
 		 "message": "user successfully created"
 		}';
-	}
+    }
 }

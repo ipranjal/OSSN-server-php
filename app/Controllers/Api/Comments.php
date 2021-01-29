@@ -4,90 +4,55 @@ namespace App\Controllers\Api;
 
 class Comments
 {
-	public function deleteIndex($id)
-	{
-		if($id){
-
-		return '{
+    public function deleteIndex($id)
+    {
+        if ($id) {
+            $comment = app()->db()->get('comment', $id);
+            app()->db()->delete($comment);
+            return '{
 		 "code": 200,
 		 "message": "comment Successfuly Deleted"
 		}';
-		}
-	}
+        }
+    }
 
+    public function putIndex($id)
+    {
+        if ($id) {
+            $comment = app()->db()->get('comment', $id);
+            app()->db()->saveRequest($comment);
+            $owner = app()->db()->get('user', $comment->owner);
+            unset($owner->meta);
+            $comment->owner = $owner;
+            return $comment;
+        }
+    }
 
-	public function putIndex($id)
-	{
-		if($id){
-
-		return '{
-		 "id": 23,
-		 "post": 32,
-		 "owner": 10,
-		 "body": "The updated comment",
-		 "created_at": "2017-07-21T17:32:28Z"
-		}';
-		}
-	}
-
-
-	/**
-	 * @params optional
-	 */
-	public function postIndex()
-	{
-		return '{
+    /**
+     * @params optional
+     */
+    public function postIndex()
+    {
+        app()->db()->saveRequest('comment');
+        return '{
 		 "code": 201,
 		 "message": "comment Successfuly Added"
 		}';
-	}
+    }
 
+    /**
+     * @params optional
+     */
+    public function getIndex()
+    {
+        $post_id = request()->post_id;
+        $comments = app()->db()->find('comment', 'WHERE post = ?', [$post_id]);
+        foreach ($comments as $comment) {
+            $owner = app()->db()->get('user', $comment->owner);
+            unset($owner->meta);
+            $comment->owner = $owner;
+        }
+        return $comments;
 
-	/**
-	 * @params optional
-	 */
-	public function getIndex()
-	{
-		return '[
-		 {
-		  "id": 23,
-		  "post": 32,
-		  "owner": {
-		      "id":10,
-		      "name": "Pranjal Pandey",
-		      "username": "physcocode",
-		      "img": "example.com/physcocode/profile.png"
-
-		  },
-		  "body": "I like this post",
-		  "created_at": "2017-07-21T17:32:28Z"
-		 },
-		 {
-		  "id": 24,
-		  "post": 32,
-		  "owner": {
-		      "id":14,
-		      "name": "Vineet Singh",
-		      "username": "vineed",
-		      "img": "example.com/vineed/profile.png"
-
-		  },
-		  "body": "This post seems great",
-		  "created_at": "2017-07-21T17:32:28Z"
-		 },
-		 {
-		  "id": 25,
-		  "post": 32,
-		  "owner":{
-		      "id":12,
-		      "name": "Ellie D",
-		      "username": "its_ellie",
-		      "img": "example.com/ellie/profile.png"
-
-		  },
-		  "body": "Hahah this is funny",
-		  "created_at": "2017-07-21T17:32:28Z"
-		 }
-		]';
-	}
+    }
 }

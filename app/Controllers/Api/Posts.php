@@ -9,110 +9,32 @@ class Posts
      */
     public function getIndex($id)
     {
-        if (false) {
+        if ($id) {
+            $post = app()->db()->get('post', $id);
+            $post->meta = json_decode($post->meta, true);
+            $owner = app()->db()->get('user', $post->owner);
+            unset($owner->meta);
+            $post->owner = $owner;
+            return json_encode($post);
 
-            return '{
-		 "id": 13,
-		 "type": "Image",
-		 "owner": {
-		  "id": 10,
-		  "name": "Pranjal Pandey",
-		  "username": "physcocoede",
-		  "image": "example.com/physcocode/profile.png"
-		 },
-		 "created_at": "2017-07-21T17:32:28Z",
-		 "visibility": "public",
-		 "meta": {
-		  "status": "I am a example status update with image",
-		  "image": "example.com/image.png"
-		 },
-		 "like_count": 9,
-		 "comment_count": 12
-		}';
         }
 
-        return '[
-		 {
-		  "id": 13,
-		  "type": "Image",
-		  "owner": {
-		   "id": 10,
-		   "name": "Pranjal Pandey",
-		   "username": "physcocoede",
-		   "image": "example.com/physcocode/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "visibility": "public",
-		  "meta": {
-		   "status": "I am a example status update with image",
-		   "image": "example.com/image.png"
-		  },
-		  "like_count": 9,
-		  "comment_count": 12
-		 },
-		 {
-		  "id": 19,
-		  "type": "Text",
-		  "owner": {
-		   "id": 10,
-		   "name": "Pranjal Pandey",
-		   "username": "physcocoede",
-		   "image": "example.com/physcocode/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "visibility": "public",
-		  "meta": {
-		   "status": "I am a example of text status update !"
-		  },
-		  "like_count": 22,
-		  "comment_count": 4
-		 },
-		 {
-		  "id": 33,
-		  "type": "Video",
-		  "owner": {
-		   "id": 12,
-		   "name": "Vineet Singh",
-		   "username": "vineed",
-		   "image": "example.com/vineed/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "visibility": "public",
-		  "meta": {
-		   "status": "I am a example of text status update !",
-		   "video": "example.com/video.mp4"
-		  },
-		  "like_count": 22,
-		  "comment_count": 4
-		 },
-		 {
-		  "id": 23,
-		  "type": "Slideshow",
-		  "owner": {
-		   "id": 12,
-		   "name": "Vineet Singh",
-		   "username": "vineed",
-		   "image": "example.com/vineed/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "visibility": "public",
-		  "meta": {
-		   "status": "I am a example of slideshow update !",
-		   "image": [
-		    "example.com/image1.png",
-		    "example.com/image2.png",
-		    "example.com/image3.png"
-		   ]
-		  },
-		  "like_count": 28,
-		  "comment_count": 9
-		 }
-		]';
+        $posts = app()->db()->get('post');
+        foreach ($posts as $post) {
+            $post->meta = json_decode($post->meta, true);
+            $owner = app()->db()->get('user', $post->owner);
+            unset($owner->meta);
+            $post->owner = $owner;
+        }
+
+        return $posts;
     }
 
     public function deleteIndex($id)
     {
         if ($id) {
+            $post = app()->db()->get('post', $id);
+            app()->db()->delete($post);
 
             return '{
 		 "code": 200,
@@ -126,6 +48,10 @@ class Posts
      */
     public function postIndex()
     {
+        $post = app()->db()->bindRequest('post');
+        $post->meta = \json_encode($post->meta);
+        $id = app()->db()->save($post);
+
         return '{
 		 "code": 201,
 		 "message": "post successfully created"
