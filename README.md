@@ -13,6 +13,17 @@ This is a server side implementation of [OSSNAPI spec](https://github.com/OSSNAP
 - Postman public workspace - https://www.postman.com/pranjalshop/workspace/the-social-network-api-s/overview
 - Generator built for making this - https://github.com/OSSNAPI/Php-Controller-Generator
 
+## Status of work 
+- [x] Implementation of user collection
+- [x] Implementation of posts collection
+- [x] Implementation of comments collection
+- [ ] Implementation of feeds feed collection
+- [ ] Implementation of Likes collection
+- [ ] Implementaion of messages collection
+- [ ] Implementaion of relations collection
+- [ ] OAuth 2 security
+- [ ] Better Handling of Error Messages
+
 
 ## License
 
