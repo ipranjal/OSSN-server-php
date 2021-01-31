@@ -4,69 +4,46 @@ namespace App\Controllers\Api;
 
 class Likes
 {
-	/**
-	 * @params optional
-	 */
-	public function postIndex()
-	{
-		return '{
+    /**
+     * @params optional
+     */
+    public function postIndex()
+    {
+        $like = app()->db()->saveRequest('like');
+        return '{
 		 "code": 201,
 		 "message": "Post successfully liked"
 		}';
-	}
+    }
 
+    /**
+     * @params optional
+     */
+    public function getIndex()
+    {
+        $post_id = request()->post_id;
+        $likes = app()->db()->find('like', 'WHERE post = ?', [$post_id]);
+        foreach ($likes as $like) {
+            $owner = app()->db()->get('user', $like->owner);
+            unset($owner->meta);
+            $like->owner = $owner;
+        }
+        return $like;
 
-	/**
-	 * @params optional
-	 */
-	public function getIndex()
-	{
-		return '[
-		 {
-		  "id": 10,
-		  "post": 13,
-		  "owner": {
-		   "id": 10,
-		   "name": "Pranjal Pandey",
-		   "username": "physcocoede",
-		   "image": "example.com/physcocode/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z"
-		 },
-		 {
-		  "id": 13,
-		  "post": 13,
-		  "owner": {
-		   "id": 12,
-		   "name": "Ellie D",
-		   "username": "its_ellie",
-		   "image": "example.com/ellie/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z"
-		 },
-		 {
-		  "id": 23,
-		  "post": 13,
-		  "owner": {
-		   "id": 15,
-		   "name": "Vineet Singh",
-		   "username": "vineed",
-		   "image": "example.com/vineed/profile.png"
-		  },
-		  "created_at": "2017-07-21T17:32:28Z"
-		 }
-		]';
-	}
+    }
 
-
-	/**
-	 * @params optional
-	 */
-	public function deleteIndex()
-	{
-		return '{
+    /**
+     * @params optional
+     */
+    public function deleteIndex()
+    {
+        $post_id = request()->post_id;
+        $user_id = request()->user_id;
+        $likes = app()->db()->find('like', 'WHERE post = ? AND user=?', [$post_id, $user_id]);
+        app()->db()->deleteAll($likes);
+        return '{
 		 "code": 200,
 		 "message": "Post successfully unliked"
 		}';
-	}
+    }
 }
