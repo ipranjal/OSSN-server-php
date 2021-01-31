@@ -24,6 +24,8 @@ This is a server side implementation of [OSSNAPI spec](https://github.com/OSSNAP
 - Goto `config/app.php` and add your database details
 - Use the `OSSNAPI - Dev with Visualize` collection inside public workspace (https://www.postman.com/pranjalshop/workspace/the-social-network-api-s/overview) to test your social network API !
 
+Note: Database tables are automatically created by scrawler when post requests are utilized to create new entities
+
 ## Rodmap for 1.0.0 release
 - [x] Basic Implementation of user,posts,activity,likes,comments,message api collection
 - [ ] Automatically add to activity feed on new like,new comment,new relation action
