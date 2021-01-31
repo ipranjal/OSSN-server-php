@@ -1,7 +1,7 @@
 <p align="center"><img src="https://github.com/OSSNAPI/Submission-Images/blob/main/logo.png?raw=true" width="200" height="200"></p>
 
 
-## OSSN SERVER PHP [WIP]
+## OSSN SERVER PHP 
 Open Source Social Networking API built in PHP
 
 This is a server side implementation of [OSSNAPI spec](https://github.com/OSSNAPI/OpenAPI-spec) built using [Scrawler PHP](https://github.com/scrawler-php/framework).This project was created during **Postman API Hackathon**
