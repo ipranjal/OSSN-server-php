@@ -4,78 +4,44 @@ namespace App\Controllers\Api;
 
 class Relations
 {
-	/**
-	 * @params optional
-	 */
-	public function postIndex()
-	{
-		return '{
+    /**
+     * @params optional
+     */
+    public function postIndex()
+    {
+        $relation = app()->db()->bindRequest('relation');
+        $relation->meta = \json_encode($relation->meta);
+        $id = app()->db()->save($relation);
+
+        return '{
 		 "code": 201,
 		 "message": "Relation successfully created"
 		}';
-	}
+    }
 
+    /**
+     * @params optional
+     */
+    public function getIndex()
+    {
+        $relations = app()->db()->find('relation', 'WHERE owner = ?', [request()->user_id]);
+        foreach ($relations as $relation) {
+            $relation->meta = \json_decode($relation->meta, true);
+        }
+        return $relations;
+    }
 
-	/**
-	 * @params optional
-	 */
-	public function getIndex()
-	{
-		return '[
-		 {
-		  "id": 10,
-		  "owner": 10,
-		  "user": {
-		   "id": 14,
-		   "name": "Pranjal Pandey",
-		   "username": "physcocoede",
-		   "image": "example.com/physcocode/profile.png"
-		  },
-		  "type": "follow",
-		  "bidirectional": false,
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "meta": {}
-		 },
-		 {
-		  "id": 13,
-		  "owner": 10,
-		  "user": {
-		   "id": 12,
-		   "name": "Ellie D",
-		   "username": "its_ellie",
-		   "image": "example.com/ellie/profile.png"
-		  },
-		  "type": "follow",
-		  "bidirectional": false,
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "meta": {}
-		 },
-		 {
-		  "id": 23,
-		  "owner": 10,
-		  "user": {
-		   "id": 15,
-		   "name": "Vineet Singh",
-		   "username": "vineed",
-		   "image": "example.com/vineed/profile.png"
-		  },
-		  "type": "follow",
-		  "bidirectional": false,
-		  "created_at": "2017-07-21T17:32:28Z",
-		  "meta": {}
-		 }
-		]';
-	}
+    /**
+     * @params optional
+     */
+    public function deleteIndex()
+    {
+        $relations = app()->db()->find('relation', 'WHERE owner = ? AND user =? ', [request()->owner_id, request()->user_id]);
+        app()->db()->deleteAll($relations);
 
-
-	/**
-	 * @params optional
-	 */
-	public function deleteIndex()
-	{
-		return '{
+        return '{
 		 "code": 200,
 		 "message": "Relation successfully removed "
 		}';
-	}
+    }
 }
