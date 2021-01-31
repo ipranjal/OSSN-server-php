@@ -13,19 +13,28 @@ This is a server side implementation of [OSSNAPI spec](https://github.com/OSSNAP
 - Postman public workspace - https://www.postman.com/pranjalshop/workspace/the-social-network-api-s/overview
 - Generator built for making this - https://github.com/OSSNAPI/Php-Controller-Generator
 
-## Status of work 
-- [x] Implementation of user collection
-- [x] Implementation of posts collection
-- [x] Implementation of comments collection
-- [ ] Implementation of feeds feed collection
-- [ ] Implementation of Likes collection
-- [ ] Implementaion of messages collection
-- [ ] Implementaion of relations collection
-- [ ] OAuth 2 security
-- [ ] Better Handling of Error Messages
+## How to use
+- Download Apache, Mysql and PHP for your OS
+  - Linux - LAMP stack (https://ampps.com/download)
+  - Windows - WAMP stack (https://ampps.com/download)
+  - Mac OS - MAMP stack (https://ampps.com/download)
+  - Mac OS (Recommended) - Valet (https://laravel.com/docs/8.x/valet)
+- Download latest release and copy your files to `htdocs` folder
+- Goto the root of your working directory and run `composer install` [Note: This repo currently uses scrawler 3.0 Beta]
+- Goto `config/app.php` and add your database details
+- Use the `OSSNAPI - Dev with Visualize` collection inside public workspace (https://www.postman.com/pranjalshop/workspace/the-social-network-api-s/overview) to test your social network API !
+
+## Rodmap for 1.0.0 release
+- [x] Basic Implementation of user,posts,activity,likes,comments,message api collection
+- [ ] Automatically add to activity feed on new like,new comment,new relation action
+- [ ] Basic validation on new entities 
+- [ ] Better message when nothing is deleted/updated
+- [ ] Filesystem API implementation
+- [ ] Oauth 2.0 for API security
+
 
 
 ## License
 
-Scrawler Router is created by [Pranjal Pandey](https://www.physcocode.com) and released under
+OSSN Server PHP is created by [Pranjal Pandey](https://www.physcocode.com) and released under
 the MIT License.
